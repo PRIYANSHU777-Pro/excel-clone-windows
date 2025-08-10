@@ -1,0 +1,9 @@
+appId: com.example.excelclone
+productName: ExcelClone
+files:
+  - build/**
+  - main.js
+  - preload.js
+win:
+  target: nsis
+  icon: public/icon.ico

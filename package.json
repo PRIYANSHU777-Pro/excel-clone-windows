@@ -1,0 +1,44 @@
+{
+  "name": "excelclone",
+  "version": "1.0.0",
+  "description": "Excel-like desktop app built with Electron + React",
+  "main": "main.js",
+  "scripts": {
+    "start": "concurrently \"npm run start-react\" \"npm run start-electron\"",
+    "start-react": "react-scripts start",
+    "start-electron": "wait-on tcp:3000 && electron .",
+    "build": "react-scripts build",
+    "dist": "npm run build && electron-builder --win nsis",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.example.excelclone",
+    "productName": "ExcelClone",
+    "files": [
+      "build/**/*",
+      "main.js",
+      "preload.js",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "public"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.ico"
+    }
+  },
+  "dependencies": {
+    "concurrently": "^8.0.1",
+    "electron": "^29.1.0",
+    "electron-builder": "^24.9.1",
+    "handsontable": "^14.3.0",
+    "hyperformula": "^2.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "sheetjs": "^0.20.0",
+    "wait-on": "^7.0.1"
+  },
+  "devDependencies": {}
+}
